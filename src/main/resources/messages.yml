@@ -1,0 +1,75 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Messages Configuration
+# ---------------------------------------------------------
+prefix: "&8[&6CyayoForge&8] "
+
+# Pesan-pesan Kesalahan / Peringatan
+error:
+  no-permission: "&cKamu tidak punya izin untuk melakukan ini."
+  not-a-player: "&cHanya pemain yang bisa menggunakan perintah ini."
+  invalid-blueprint: "&cItem tersebut bukan Blueprint yang valid!"
+  blueprint-level-too-low: "&cLevel kamu masih kurang! Blueprint ini membutuhkan &eLevel %required% &c(Level kamu: &e%level%&c)."
+  no-profile: "&cKamu harus memilih atau membuat profil karakter terlebih dahulu untuk memakai blueprint ini!"
+  put-blueprint-first: "&cMasukkan Blueprint terlebih dahulu sebelum menaruh material!"
+  put-target-first: "&cMasukkan Item Target terlebih dahulu sebelum menaruh Fragment!"
+  invalid-tier: "&cSenjata/Armor ini memiliki tier yang terlalu rendah untuk dihancurkan atau di-reroll!"
+  missing-materials: "&cMaterial tidak lengkap! Pastikan seluruh material sudah terisi sesuai syarat."
+  not-enough-money: "&cUangmu tidak cukup! Butuh &e%cost% &cuntuk mereroll item ini."
+  inventory-full: "&cInventory kamu penuh! Harap kosongkan beberapa slot."
+  invalid-item: "&cItem yang dimasukkan tidak sah."
+  player-not-found: "&cPemain tersebut tidak sedang online!"
+  invalid-material-slot: "&cSlot ini hanya untuk %category% sesuai materials.yml!"
+  invalid-ingredient: "&cItem tersebut bukan Ingredient yang terdaftar di trait.yml!"
+  invalid-slot-item: "&cItem ini tidak sah sebagai Blueprint atau Material penempaan yang sesuai!"
+  craft-error: "&cTerjadi kesalahan saat memproses item hasil tempaan!"
+  fragment-not-registered: "&cItem ini bukan Fragment yang terdaftar!"
+  fragment-mismatch: "&cFragment tidak cocok dengan Tier senjata di slot target!"
+  hold-item-inspect: "&cAnda harus memegang item untuk diinspeksi, atau gunakan /winspect <id>!"
+  not-forged-item: "&cSenjata ini bukan hasil tempaan CyayoForge!"
+  material-status: "&7Syarat: %status%"
+  crusher-output-occupied: "&cSlot hasil peleburan sudah terisi fragment berbeda atau penuh! Ambil hasil sebelumnya terlebih dahulu."
+
+
+# Pesan-pesan Keberhasilan
+success:
+  forged: "&aItem berhasil ditempa dan telah masuk ke inventory kamu!"
+  rerolled: "&aItem berhasil di-reroll! Uang &e%cost% &atelah dipotong."
+  crushed: "&aGear berhasil dilebur menjadi &dFragment&a!"
+  reloaded: "&aSeluruh file konfigurasi CyayoForgeV2 berhasil di-reload!"
+
+# Format Status Material
+materials:
+  status-format: "%category%: &f%current%/%required%"
+  status-separator: " &8| "
+
+# Pesan-pesan Internal GUI
+gui:
+  cant-put-here: "&cKamu tidak bisa meletakkan item itu di slot ini!"
+
+
+# Teks Menu Winspect (Inspect Weapon)
+winspect:
+  crafter-info:
+    title: "&c&lINFO PENEMPA"
+    lore:
+      - "&7Penempa: &e%crafter%"
+      - "&7Tanggal: &e%date%"
+  quality-info:
+    title: "&a&lKUALITAS"
+    lore:
+      - "&7Tingkat Kesempurnaan: &b%quality%%"
+  material-lore:
+    - ""
+    - "&7Bagian: %category%"
+    - "&7Jumlah Digunakan: &f%amount%x"
+  empty-slot:
+    name: "%category%"
+    lore:
+      - "&7(Tidak ada material yang digunakan)"
+
+# Pesan Perintah Admin
+command:
+  addstat-success: "&aBerhasil menambahkan &f+%amount% &ake tracker &e%tracker% &apada &f%count% &aitem milik &e%player%&a!"
+  addstat-not-found: "&cTidak ada item Shiny yang cocok ditemukan pada slot yang dipilih (%slot%) untuk pemain %player%."
+  addstat-invalid-amount: "&cJumlah penambahan harus berupa angka valid!"
+  addstat-usage: "&cPenggunaan: /%cmd% addstat <player> <tracker_id|trigger|all> <amount> [mainhand|armor|all]"

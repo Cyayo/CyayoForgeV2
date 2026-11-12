@@ -1,0 +1,84 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Item Reroll GUI Layout
+# ---------------------------------------------------------
+title: "&8🎲 &bItem Reroll"
+size: 45
+
+slots:
+  # Slot orange untuk senjata/armor yang ingin di reroll
+  item-target: 21
+  
+  # Slot biru untuk fragment
+  fragment-slot: 23
+  
+  # Tombol anvil untuk eksekusi
+  reroll-button: 40
+
+decorations:
+  # Kaca penghias slot senjata
+  orange-glass:
+    material: ORANGE_STAINED_GLASS_PANE
+    name: "&6Slot Target Item"
+    slots: [21]
+    
+  # Kaca penghias slot fragment
+  blue-glass:
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: "&bSlot Fragment"
+    slots: [23]
+    
+  # Background pengisi sisa slot
+  background:
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    slots: [0, 1, 9, 7, 8, 17, 27, 36, 37, 43, 44, 35]
+
+# Desain Tombol Reroll (Dinamis Berdasarkan Status Target & Fragment)
+reroll-button-item:
+  material: ANVIL
+  status-format:
+    fulfilled: "&a%current%/%required% &a✔"
+    unfulfilled: "&c%current%/%required% &c✗"
+  empty:
+    name: "&c&lREROLL STATS"
+    lore:
+      - "&7Letakkan senjata/armor pada slot"
+      - "&7target untuk melihat syarat reroll."
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&7Status: &cBelum ada item target"
+  not-ready:
+    name: "&e&lREROLL STATS"
+    lore:
+      - "&7Item Target: &f%target_item%"
+      - "&7Tier Item: %tier%"
+      - "&7Total Reroll: &b%reroll_count%x"
+      - "&7Pity Counter: &e%pity_count%"
+      - "&7Biaya: &e%cost%"
+      - ""
+      - "&6Fragment Dibutuhkan:"
+      - "  &8✦ &f%fragment_name%: %fragment_status%"
+      - ""
+      - "&6Stat Item Saat Ini:"
+      - "%item_lore%"
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&c✗ Fragment atau Uang belum mencukupi!"
+  ready:
+    name: "&a&lREROLL STATS"
+    lore:
+      - "&7Item Target: &f%target_item%"
+      - "&7Tier Item: %tier%"
+      - "&7Total Reroll: &b%reroll_count%x"
+      - "&7Pity Counter: &e%pity_count%"
+      - "&7Biaya: &e%cost%"
+      - ""
+      - "&6Fragment Dibutuhkan:"
+      - "  &8✦ &f%fragment_name%: %fragment_status%"
+      - ""
+      - "&6Stat Item Saat Ini:"
+      - "%item_lore%"
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&a✔ Seluruh syarat telah terpenuhi!"
+      - "&eKlik untuk mengacak ulang stat item ini."

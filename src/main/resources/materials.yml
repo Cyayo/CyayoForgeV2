@@ -1,0 +1,87 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Materials Configuration
+# ---------------------------------------------------------
+# Di sini Anda mendaftarkan item-item MMOItems mana yang sah dimasukkan ke GUI.
+# Setiap kategori dapat memiliki nama kustom dan daftar valid-types / valid-items.
+# Blueprint akan merujuk ke KEY kategori ini (contoh: MINING_MATERIAL:15).
+#
+# PANDUAN STATS MATERIAL (MMOItems Custom Stat):
+# Pada material MMOItems, Anda bisa menambahkan 'FORGE_BONUS_STATS' (List of String).
+# Format:
+#   - "[ALL]MAX_HEALTH:1-3"           -> Masuk ke semua jenis item (bisa juga ditulis tanpa [ALL], misal "MAX_HEALTH:1-3")
+#   - "[MELEE]ATTACK_DAMAGE:5-10"     -> Hanya masuk jika item target terdaftar di group MELEE pada config.yml
+#   - "[MELEE,RANGED]CRITICAL_CHANCE:2-5" -> Masuk jika item target adalah MELEE ATAU RANGED (Multi-group didukung!)
+#   - "[ARMOR]ARMOR:2-4"                -> Hanya masuk jika item target terdaftar di group ARMOR pada config.yml
+# Rentang angka akan otomatis diakumulasikan jika menggunakan beberapa material berbeda!
+
+# Pengaturan Blueprint yang sah dimasukkan ke Slot Blueprint
+blueprint:
+  name: "&bBlueprint"
+  # Tipe MMOItems yang diizinkan sebagai Blueprint
+  valid-types:
+    - "BLUEPRINT"
+    - "RECIPE"
+  # Atau ID spesifik MMOItems jika tipenya berbeda (Format: TYPE:ID)
+  valid-items: []
+
+categories:
+  # Kategori Mob Drop Material
+  MATERIAL_MOB:
+    name: "&eMob Material"
+    valid-types:
+      - "MATERIAL"
+      - "MOB_MAT"
+      - "MONSTER_DROP"
+      - "MATERIAL_INGREDIENT"
+      - "INGREDIENTS"
+    valid-items:
+      - "MATERIAL:ROTTEN_FLESH_TIER_1"
+      - "MATERIAL:BONE_SHARD"
+      - "MISCELLANEOUS:DRAGON_HEART"
+      - "MATERIAL:ANTS_FANG"
+      - "MATERIAL:GOLEM_CORE"
+      - "MATERIAL:GOLEM_HEART"
+    
+  # Kategori Fish Material
+  MATERIAL_FISH:
+    name: "&bFish Material"
+    valid-types:
+      - "FISH_MAT"
+      - "FISHING_LOOT"
+    valid-items:
+      - "MATERIAL:MAGIC_FISH"
+      - "MATERIAL:DEEP_SEA_SCALE"
+
+  # Kategori Mining Material (Batu, Bijih, Logam)
+  MATERIAL_MINE:
+    name: "&aMining Material"
+    valid-types:
+      - "ORE_MAT"
+      - "MINING_GEM"
+      - "GEM_STONE"
+    valid-items:
+      - "MATERIAL:IRON_ORE"
+      - "MATERIAL:MYTHRIL_INGOT"
+      - "MATERIAL:GOLD_INGOT"
+
+  # Kategori Wood Material
+  MATERIAL_WOOD:
+    name: "&6Wood Material"
+    valid-types:
+      - "WOOD_MAT"
+      - "WOOD"
+    valid-items:
+      - "MATERIAL:OAK_LOG"
+      - "MATERIAL:ANCIENT_BARK"
+
+  # Kategori Magic / Arcane Material
+  MATERIAL_MAGIC:
+    name: "&dMagic Essence"
+    valid-types:
+      - "MAGIC_MAT"
+      - "RUNE"
+      - "SCROLL"
+    valid-items:
+      - "MATERIAL:MANA_CRYSTAL"
+      - "MATERIAL:ARCANE_DUST"
+

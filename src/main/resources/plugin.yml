@@ -1,0 +1,22 @@
+name: CyayoForgeV2
+version: 1.0.0
+main: id.cyayo.forgev2.CyayoForgeV2
+api-version: 1.13
+softdepend: [MMOItems, MythicLib, PlaceholderAPI, Vault, CyayoProfiles]
+commands:
+  cyayoforge:
+    description: Komando utama CyayoForgeV2.
+    aliases: [cf, forge]
+  crusher:
+    description: Buka menu gear crusher.
+  reroll:
+    description: Buka menu item reroll.
+  winspect:
+    description: Buka menu inspect weapon.
+permissions:
+  cyayoforgev2.use:
+    description: Mengizinkan player membuka menu untuk diri sendiri.
+    default: false
+  cyayoforgev2.admin:
+    description: Mengizinkan reload config dan membuka menu untuk player lain.
+    default: op

@@ -1,0 +1,57 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Gear Crusher GUI Layout
+# ---------------------------------------------------------
+title: "&8♻ &dGear Crusher"
+size: 54
+
+slots:
+  # 3 slot orange untuk gear/blueprint yang akan dilebur
+  items-to-crush: [21, 22, 23]
+  
+  # Tombol Anvil untuk mengeksekusi proses
+  crush-button: 49
+  
+  # Slot red glass untuk mengambil hasil fragment
+  fragment-results: [39, 40, 41]
+
+decorations:
+  # Kaca penghias slot input
+  orange-glass:
+    material: ORANGE_STAINED_GLASS_PANE
+    name: "&6Slot Lebur"
+    slots: [21, 22, 23]
+    
+  # Kaca penghias slot output
+  red-glass:
+    material: RED_STAINED_GLASS_PANE
+    name: "&cHasil Fragment"
+    slots: [39, 40, 41]
+    
+  # Background pengisi slot kosong
+  background:
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    slots: [0, 1, 9, 7, 8, 17, 36, 45, 46, 52, 53, 44]
+
+# Desain Tombol Crusher (Dinamis Menampilkan Gear yang Akan Dilebur & Estimasi Fragment)
+crush-button-item:
+  material: ANVIL
+  empty:
+    name: "&c&lHANCURKAN GEAR"
+    lore:
+      - "&7Letakkan senjata/armor pada slot"
+      - "&7peleburan untuk melihat hasil fragment."
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&7Status: &cBelum ada item untuk dilebur"
+  ready:
+    name: "&d&lHANCURKAN GEAR"
+    lore:
+      - "&7Item yang akan dilebur: &e%item_count% item"
+      - ""
+      - "&6Estimasi Hasil Peleburan:"
+      - "%fragment_results%"
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&eKlik untuk melebur seluruh gear ini."
+  fragment-result-line: "  &8✦ &d%fragment_name%: &f%amount%x"

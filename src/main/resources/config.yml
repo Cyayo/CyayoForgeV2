@@ -1,0 +1,312 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Main Configuration
+# ---------------------------------------------------------
+
+# Pengaturan Global Broadcast
+# Jika item yang diforge menggunakan blueprint tier tertentu, broadcast akan dikirim.
+broadcast:
+  enabled: true
+  # Daftar tier yang akan memicu broadcast
+  trigger-tiers:
+    - "A"
+    - "S"
+    - "SS"
+    - "SSS"
+  
+  # Format warna pesan broadcast berdasarkan tier item.
+  # Mendukung format satu baris string maupun list baris (multiline)!
+  # %player% = nama pemain
+  # %item% = nama item hasil
+  # %percentage% = persen roll
+  format:
+    "A":
+      - "&8[&6CyayoForge&8] &e%player% &fberhasil menempa &e%item% &fdengan tingkat kesempurnaan &a%percentage%%&f!"
+    "S":
+      - "&8[&6CyayoForge&8] &e%player% &fberhasil menempa &e%item% &fdengan tingkat kesempurnaan &b%percentage%%&f!"
+    "SS":
+      - "&8[&6CyayoForge&8] &e%player% &fberhasil menempa &e%item% &fdengan tingkat kesempurnaan &d%percentage%%&f!"
+    "SSS":
+      - ""
+      - "&6&l[MYTHIC FORGE] &e%player% &fberhasil menempa &c%item% &fdengan kualitas &c%percentage%%&f!"
+      - ""
+    # Default jika tidak ada di atas
+    default:
+      - "&8[&6CyayoForge&8] &e%player% &fberhasil menempa &e%item% &fdengan tingkat kesempurnaan &7%percentage%%&f!"
+
+# Pengaturan Kelompok Item (Item Groups)
+# Digunakan untuk menyaring bonus stats material berdasarkan target tipe MMOItems.
+# [ALL] atau tanpa kurung siku akan masuk ke semua jenis item.
+# Jika material menggunakan prefix seperti [MELEE], stat hanya masuk jika target tipe terdaftar di kelompok MELEE.
+item-groups:
+  MELEE:
+    - "SWORD"
+    - "DAGGER"
+    - "GREATSWORD"
+    - "KATANA"
+    - "AXE"
+    - "SPEAR"
+    - "HAMMER"
+    - "HALBERD"
+    - "GAUNTLET"
+  RANGED:
+    - "BOW"
+    - "CROSSBOW"
+    - "MUSKET"
+    - "GUN"
+    - "SLINGSHOT"
+  MAGIC:
+    - "STAFF"
+    - "WAND"
+    - "TOME"
+    - "ORB"
+    - "SCEPTER"
+  ARMOR:
+    - "HELMET"
+    - "CHESTPLATE"
+    - "LEGGINGS"
+    - "BOOTS"
+    - "SHIELD"
+  ACCESSORY:
+    - "RING"
+    - "AMULET"
+    - "NECKLACE"
+    - "BRACELET"
+    - "RELIC"
+    - "BELT"
+
+# Pengaturan Multiplier Stat
+# Daftar stat MMOItems yang nilainya akan dikalikan dengan total Multiplier dari material.
+# Stat yang tidak ada di daftar ini tidak akan terpengaruh oleh kualitas material.
+multiplied-stats:
+  - "ATTACK_DAMAGE"
+  - "MAGIC_DAMAGE"
+  - "CRITICAL_STRIKE_CHANCE"
+  - "CRITICAL_STRIKE_POWER"
+  - "ARMOR"
+  - "ARMOR_TOUGHNESS"
+  - "MAX_HEALTH"
+
+# Pengaturan Lore Injector (Persentase Kualitas per Stat)
+# Menentukan format teks persentase yang disuntikkan ke ujung baris lore stat.
+# Anda bisa menggunakan format warna bawaan atau MiniMessage (jika server Anda mendukungnya).
+# %percentage% = nilai persen roll dari stat tersebut.
+# Sistem akan mengecek dari persentase tertinggi ke terendah.
+lore-injector-formats:
+  # Jika persentase roll mencapai 100%
+  100: " <rainbow>[%percentage%% Max]</rainbow>"
+  # Jika persentase roll mencapai 90% ke atas
+  90: " &8[&a%percentage%%&8]"
+  # Jika persentase roll mencapai 70% ke atas
+  70: " &8[&e%percentage%%&8]"
+  # Jika persentase roll mencapai 40% ke atas
+  40: " &8[&6%percentage%%&8]"
+  # Default untuk di bawah 40% (Ampas)
+  0: " &8[&c%percentage%%&8]"
+
+# Pengaturan Reroll Cost & Pity System
+# Biaya statis (menggunakan Vault balance) untuk melakukan item reroll berdasarkan tier
+reroll-cost:
+  enabled: true
+  costs:
+    "VERDANT": 10000.0
+    "GILDED": 25000.0
+    "TEMPEST": 50000.0
+    # Tambahkan tier tinggi lainnya di sini...
+  # Jika tier tidak ditemukan, gunakan harga default ini:
+  default-cost: 1000.0
+
+  # Sistem Diskon Biaya Reroll berdasarkan Permission / Rank (Gamepass / Rank Perk)
+  discounts:
+    enabled: true
+    # Format teks biaya jika ada diskon (%base_cost%, %final_cost%, %discount_percent%, %badge%)
+    discount-format: "&m%base_cost%&r &a%final_cost% %badge%"
+    # Daftar rank / permission (dibaca dari atas ke bawah, prioritas tertinggi di atas)
+    ranks:
+      vip-plus:
+        permission: "cyayoforge.discount.vipplus"
+        discount-percentage: 50 # Diskon 50%
+        badge: "&6[VIP+ 50% OFF]"
+      vip:
+        permission: "cyayoforge.discount.vip"
+        discount-percentage: 25 # Diskon 25%
+        badge: "&a[VIP 25% OFF]"
+
+# Sistem Pity Reroll
+# Semakin sering item di-reroll, semakin tinggi bonus roll & floor pada stat item.
+# Jika salah satu stat berhasil mendapatkan nilai maksimal (100%), pity count akan di-RESET kembali ke 0.
+reroll-pity:
+  enabled: true
+  # Persentase tambahan batas minimum roll per reroll (contoh: 2.5% per reroll)
+  # Jika sudah reroll 10x, maka batas bawah roll minimal 25% (tidak akan dapat roll di bawah 25%)
+  pity-boost-per-reroll: 2.5
+  # Batas maksimal persentase floor dari pity (misal 90.0 = maksimal floor 90%)
+  max-pity-floor: 90.0
+  # Jumlah reroll tertentu yang menjamin salah satu stat ACAK pasti mendapatkan 100% MAX STAT
+  # Set ke 0 atau -1 jika tidak ingin ada guaranteed instant stat.
+  guaranteed-max-at: 30
+
+  # ========================================================
+  # Desperate Hard Pity (One-Time Milestone Jackpot)
+  # ========================================================
+  # Kesempatan satu kali (one-shot jackpot) tepat saat item mencapai angka total reroll tertentu.
+  # Jika item sudah melewati angka tersebut dan gagal mendapatkan jackpot, kesempatan ini HANGUS selamanya untuk item tersebut.
+  # Anda dapat mengatur beberapa tier jackpot (misal all stats 100%, all stats 90%, all stats 80%, dll).
+  desperate-hard-pity:
+    enabled: true
+    # Angka total reroll spesifik di mana kesempatan desperate pity ini aktif (misal tepat di reroll ke-30)
+    at-reroll: 30
+    # Tier hadiah jackpot (diperiksa dari atas ke bawah).
+    # 'chance' dalam bentuk persentase (contoh: 0.01 = 0.01%, 1.0 = 1%, 50.0 = 50%)
+    # 'all-stats-percent' adalah nilai roll yang akan diberikan ke SEMUA stats item secara serentak.
+    # 'broadcast' jika ingin mengirim pesan khusus saat jackpot ini didapatkan.
+    tiers:
+      perfect_god_roll:
+        chance: 0.01 # 0.01% chance jackpot ALL STATS 100% (Quality 100%)
+        all-stats-percent: 100.0
+        broadcast: "<gradient:#FF0055:#FFAA00><b>JACKPOT HARD PITY!</b></gradient> &f%player% &7just hit the desperate jackpot! &e%item% &7all stats are now &a<b>100% MAX ROLL</b>!"
+      mythic_roll:
+        chance: 0.1 # 0.1% chance ALL STATS 90%
+        all-stats-percent: 90.0
+        broadcast: "<gradient:#AA00FF:#55FFFF><b>LUCKY HARD PITY!</b></gradient> &f%player% &7hit desperate pity on &e%item% &7with all stats &b90% Roll!"
+      legend_roll:
+        chance: 1.0 # 1.0% chance ALL STATS 80%
+        all-stats-percent: 80.0
+        broadcast: ""
+
+# Pengaturan Fragment (Crusher & Reroll)
+# HANYA tier yang terdaftar di bawah ini yang bisa dihancurkan (Crush) atau di-Reroll.
+# Tier rendah (seperti C, B, A) tidak akan bisa dimasukkan ke menu Crusher/Reroll jika tidak didaftarkan di sini.
+fragments:
+  # Jumlah rentang acak fragment yang didapat pemain saat menghancurkan item (Crusher)
+  amount:
+    min: 1
+    max: 3
+    
+  mapping:
+    "VERDANT": "MATERIAL:FRAGMENT_VERDANT"
+    "GILDED": "MATERIAL:FRAGMENT_GILDED"
+    "TEMPEST": "MATERIAL:FRAGMENT_TEMPEST"
+    # Tambahkan tier tinggi lainnya di sini...
+  
+  # Jika item tidak punya tier atau tier tidak terdaftar di atas, apakah diizinkan?
+  # Isikan "NONE" untuk MEMBLOKIR item tersebut (sangat direkomendasikan untuk mencegah eksploitasi tier rendah).
+  default-fragment: "NONE"
+
+# Pengaturan Chat Showcase [winspect]
+chat-showcase:
+  enabled: true
+  placeholders:
+    - "[weapon]"
+    - "[winspect]"
+    - "[ws]"
+  # Durasi item showcase bisa diklik (dalam menit) sebelum kadaluarsa
+  expiry-minutes: 10
+  # Format teks showcase di chat
+  format: "&e[{item_name}&e]"
+  # Format keseluruhan chat ketika menggunakan showcase.
+  # Anda bisa memasukkan placeholder PAPI seperti %luckperms_prefix%, %luckperms_suffix%, dll.
+  # Gunakan {message} untuk posisi pesan chat.
+  # Contoh: "%luckperms_prefix% &f%player_displayname% %luckperms_suffix% &7» &f{message}"
+  # Jika dikosongkan/tidak diatur, plugin akan menggunakan format default bawaan server (<Player> message).
+  chat-format: "&7[%luckperms_prefix%&7] %cyayomythraces_display_icon% &f%player_displayname% %alonsotags_tag_chat%&8» &f{message}"
+  messages:
+    expired: "&cShowcase ini telah kadaluarsa atau item tidak ditemukan!"
+
+# ========================================================
+# Pengaturan Shiny Item & Stat Tracker (StatTrak System)
+# ========================================================
+shiny:
+  enabled: true
+
+  # Apakah item shiny memiliki efek kilau enchant (enchantment glow / glint)?
+  glow: true
+
+  # Nama placeholder tracker saat item masih berada di preview forge
+  # Mencegah player mengeksploitasi preview dengan cabut-pasang material untuk gacha tracker
+  preview-tracker-name: "Unknown Track"
+
+  # Format modifikasi nama item shiny hasil tempaan
+  # Contoh hasil: "★ Shiny Dull Sword"
+  name-format:
+    prefix: "&6★ &eShiny "
+    suffix: ""
+
+  # Format tampilan satu baris untuk Stat Tracker di MMOItems Lore
+  # Placeholder: %tracker_name% (nama tracker), %count% (jumlah hitungan)
+  # Angka otomatis diformat ribuan (contoh: 1,250)
+  tracker-format: "&6★ &e%tracker_name%: &f%count%"
+
+  # Daftar stat tracker yang dapat di-roll secara acak saat crafting item shiny.
+  # - display-name: Nama stat yang tampil pada item
+  # - trigger: Tipe event pemicu (MOBS_KILLED, PLAYERS_KILLED, BOSSES_KILLED, DEATHS, DAMAGE_DEALT, DAMAGE_TAKEN, BLOCKS_MINED, FISH_CAUGHT, CUSTOM)
+  # - applies-to: WEAPON, ARMOR, atau ALL
+  # - weight: Bobot kemungkinan roll (semakin tinggi bobot, semakin sering keluar)
+  trackers:
+    mobs_killed:
+      display-name: "Mobs Killed"
+      trigger: "MOBS_KILLED"
+      applies-to: "WEAPON"
+      weight: 100
+    players_killed:
+      display-name: "Players Killed"
+      trigger: "PLAYERS_KILLED"
+      applies-to: "WEAPON"
+      weight: 20
+    bosses_killed:
+      display-name: "Bosses Killed"
+      trigger: "BOSSES_KILLED"
+      applies-to: "WEAPON"
+      weight: 30
+    damage_dealt:
+      display-name: "Damage Dealt"
+      trigger: "DAMAGE_DEALT"
+      applies-to: "WEAPON"
+      weight: 60
+    damage_taken:
+      display-name: "Damage Taken"
+      trigger: "DAMAGE_TAKEN"
+      applies-to: "ARMOR"
+      weight: 80
+    deaths:
+      display-name: "Deaths"
+      trigger: "DEATHS"
+      applies-to: "ALL"
+      weight: 40
+    blocks_mined:
+      display-name: "Blocks Mined"
+      trigger: "BLOCKS_MINED"
+      applies-to: "WEAPON"
+      weight: 50
+    fish_caught:
+      display-name: "Fish Caught"
+      trigger: "FISH_CAUGHT"
+      applies-to: "WEAPON"
+      weight: 30
+    # Contoh custom event tracker yang dapat dinaikkan lewat API atau command admin /cyayoforge addstat
+    dungeons_won:
+      display-name: "Dungeons Won"
+      trigger: "CUSTOM"
+      applies-to: "ALL"
+      weight: 25
+    world_events_won:
+      display-name: "World Events Won"
+      trigger: "CUSTOM"
+      applies-to: "ALL"
+      weight: 25
+
+# Pengaturan Integrasi CyayoProfiles (softdepend)
+cyayoprofiles:
+  enabled: true
+  # Larang pemain menggunakan/memasukkan blueprint jika Required Level blueprint > level profil pemain
+  block_higher_level_blueprint: true
+  # Jika true, pemain tanpa profil aktif tidak bisa memakai blueprint yang memiliki Required Level
+  require_active_profile: true
+  # Permission bypass untuk mengabaikan batas level blueprint
+  bypass_permission: "cyayoforgev2.bypass.level"
+  # Wariskan Required Level dari blueprint ke item hasil tempa (dan pertahankan saat reroll)
+  inherit_blueprint_required_level: true
+  # Aktifkan log debug di console untuk diagnosa pembacaan & penyuntikan Required Level
+  debug: false
+
+
+

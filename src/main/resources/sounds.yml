@@ -1,0 +1,26 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Sound Effects Configuration
+# Gunakan Sound Bukkit/Spigot (contoh: BLOCK_ANVIL_USE, ENTITY_PLAYER_LEVELUP, UI_BUTTON_CLICK, ENTITY_VILLAGER_NO).
+# Isikan "" atau "NONE" pada nama sound jika ingin menonaktifkan suara tersebut.
+# ---------------------------------------------------------
+sounds:
+  forge-success:
+    sound: "BLOCK_ANVIL_USE"
+    volume: 1.0
+    pitch: 1.0
+  crush-success:
+    sound: "BLOCK_ANVIL_USE"
+    volume: 1.0
+    pitch: 1.0
+  reroll-success:
+    sound: "BLOCK_ENCHANTMENT_TABLE_USE"
+    volume: 1.0
+    pitch: 1.0
+  error:
+    sound: "ENTITY_VILLAGER_NO"
+    volume: 1.0
+    pitch: 1.0
+  click:
+    sound: "UI_BUTTON_CLICK"
+    volume: 0.5
+    pitch: 1.0

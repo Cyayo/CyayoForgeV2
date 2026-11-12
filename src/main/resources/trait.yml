@@ -1,0 +1,336 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Traits, Effectiveness & Modifiers
+# ---------------------------------------------------------
+# Di sini Anda mendefinisikan item-item Ingredient yang dapat ditaruh
+# pada slot ingredients di GUI Forge untuk memodifikasi hasil tempaan.
+#
+# Setiap item bisa memiliki salah satu atau kombinasi dari:
+# 1. traits        : Bonus stats yang dibagi per WEAPON dan ARMOR (min-max atau flat).
+# 2. effectiveness : Pengaruh posisi terhadap slot ingredient lain di sekitarnya.
+#                    (below, above, left, right, touching, not-touching).
+
+items:
+  # =======================================================================================
+  #                                      MAP 1
+  # =======================================================================================
+  "MATERIAL_INGREDIENT:AT_ARMORS":
+    traits:
+      ARMOR:
+        - "ARMOR:1-2"
+        - "MAX_HEALTH:4-8"
+      WEAPON:
+        - "KNOCKBACK_RESISTANCE:0.05-0.1"
+    effectiveness:
+      - below: "+20%"
+      - above: "-10%"
+
+  "MATERIAL_INGREDIENT:AT_EYES":
+    traits:
+      WEAPON:
+        - "CRITICAL_STRIKE_CHANCE:1-3"
+        - "ATTACK_SPEED:0.05"
+      ARMOR:
+        - "DODGE_RATING:2-4"
+
+  "MATERIAL_INGREDIENT:AT_SPEAR":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:3-6"
+        - "PVE_DAMAGE:2-4"
+      ARMOR:
+        - "ARMOR:2-4"
+
+  "MATERIAL_INGREDIENT:AT_DAGGER":
+    traits:
+      WEAPON:
+        - "CRITICAL_STRIKE_POWER:4-8"
+        - "MOVEMENT_SPEED:0.02"
+      ARMOR:
+        - "MOVEMENT_SPEED:0.02"
+        - "DODGE_RATING:3-6"
+    effectiveness:
+      - right: "+25%"
+      - left: "-15%"
+
+  "MATERIAL_INGREDIENT:AT_HAIR_ORNAMENT":
+    effectiveness:
+      - touching: "+20%"
+      - not-touching: "-10%"
+
+  "MATERIAL_INGREDIENT:AT_SOUL":
+    traits:
+      WEAPON:
+        - "MAGIC_DAMAGE:4-8"
+        - "MANA_REGENERATION:1-2"
+      ARMOR:
+        - "MAX_MANA:15-25"
+        - "MAGIC_DAMAGE:3-5"
+    effectiveness:
+      - above: "+30%"
+      - below: "-15%"
+
+  "MATERIAL_INGREDIENT:AT_BLACK_FRISBEE":
+    traits:
+      WEAPON:
+        - "PROJECTILE_DAMAGE:6-12"
+        - "ATTACK_DAMAGE:4-8"
+      ARMOR:
+        - "ARMOR_TOUGHNESS:2-4"
+        - "BLOCK_RATING:4-8"
+
+  "MATERIAL_INGREDIENT:AT_TOTEM_HARP":
+    effectiveness:
+      - left: "+35%"
+      - right: "+35%"
+      - above: "-20%"
+      - below: "-20%"
+
+  "MATERIAL_INGREDIENT:AT_TOTEM_CORE":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:8-15"
+        - "CRITICAL_STRIKE_POWER:10-18"
+      ARMOR:
+        - "MAX_HEALTH:20-40"
+        - "DAMAGE_REDUCTION:3-5"
+    effectiveness:
+      - touching: "+30%"
+
+  # =======================================================================================
+  #                                      MAP 2
+  # =======================================================================================
+  "MATERIAL_INGREDIENT:APOCALYPSE_BLUE_HEAVEN":
+    traits:
+      WEAPON:
+        - "MAGIC_DAMAGE:5-10"
+        - "MANA_REGENERATION:2-3"
+      ARMOR:
+        - "MAX_MANA:20-35"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_SCARLET_HELL":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:6-12"
+        - "LIFESTEAL:1-2"
+      ARMOR:
+        - "MAX_HEALTH:15-30"
+        - "HEALTH_REGENERATION:1-2"
+    effectiveness:
+      - below: "+25%"
+      - above: "-15%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_HEARTH":
+    effectiveness:
+      - above: "+30%"
+      - below: "+30%"
+      - left: "-15%"
+      - right: "-15%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_MERGANCE":
+    traits:
+      WEAPON:
+        - "CRITICAL_STRIKE_CHANCE:3-5"
+        - "CRITICAL_STRIKE_POWER:6-12"
+      ARMOR:
+        - "ARMOR:3-6"
+        - "ARMOR_TOUGHNESS:2-5"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_BEAM_BALISTA":
+    traits:
+      WEAPON:
+        - "PROJECTILE_DAMAGE:10-18"
+        - "PVP_DAMAGE:3-6"
+      ARMOR:
+        - "PROJECTILE_DAMAGE_REDUCTION:4-8"
+        - "MOVEMENT_SPEED:0.02"
+    effectiveness:
+      - left: "+30%"
+      - right: "-10%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_POWER":
+    traits:
+      WEAPON:
+        - "PHYSICAL_DAMAGE:8-15"
+        - "ATTACK_SPEED:0.08"
+      ARMOR:
+        - "MAX_HEALTH:25-45"
+        - "KNOCKBACK_RESISTANCE:0.1"
+    effectiveness:
+      - touching: "+25%"
+      - not-touching: "-15%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_BLADE":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:12-22"
+        - "CRITICAL_STRIKE_POWER:12-20"
+      ARMOR:
+        - "ARMOR:5-10"
+        - "PARRY_RATING:5-10"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_TENTACLE":
+    traits:
+      WEAPON:
+        - "LIFESTEAL:2-4"
+        - "ATTACK_DAMAGE:10-18"
+      ARMOR:
+        - "DAMAGE_REDUCTION:4-7"
+        - "HEALTH_REGENERATION:2-4"
+    effectiveness:
+      - below: "+40%"
+      - not-touching: "-20%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_INNER_GLOVE":
+    effectiveness:
+      - touching: "+35%"
+      - not-touching: "+15%"
+
+  "MATERIAL_INGREDIENT:APOCALYPSE_HEART_CORE":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:18-32"
+        - "CRITICAL_STRIKE_CHANCE:5-10"
+        - "CRITICAL_STRIKE_POWER:15-25"
+      ARMOR:
+        - "MAX_HEALTH:50-90"
+        - "DAMAGE_REDUCTION:6-10"
+        - "ARMOR:8-15"
+    effectiveness:
+      - touching: "+45%"
+
+  # =======================================================================================
+  #                                      MAP 3
+  # =======================================================================================
+  "MATERIAL_INGREDIENT:SCORPION_CHITIN_SHARD":
+    traits:
+      WEAPON:
+        - "PVE_DAMAGE:4-8"
+        - "ATTACK_DAMAGE:8-14"
+      ARMOR:
+        - "ARMOR:4-8"
+        - "ARMOR_TOUGHNESS:3-6"
+
+  "MATERIAL_INGREDIENT:SUNBLEACHED_BONE_DUST":
+    traits:
+      WEAPON:
+        - "MAGIC_DAMAGE:8-15"
+        - "UNDEAD_DAMAGE:6-12"
+      ARMOR:
+        - "MAX_MANA:30-50"
+        - "MAGIC_DAMAGE_REDUCTION:4-8"
+    effectiveness:
+      - above: "+25%"
+      - below: "-15%"
+
+  "MATERIAL_INGREDIENT:DUNE_VIPER_FANG":
+    traits:
+      WEAPON:
+        - "CRITICAL_STRIKE_POWER:10-18"
+        - "ATTACK_SPEED:0.06"
+      ARMOR:
+        - "DODGE_RATING:5-10"
+        - "MOVEMENT_SPEED:0.03"
+
+  "MATERIAL_INGREDIENT:BADLANDS_CACTUS_NEEDLE":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:10-18"
+        - "PVP_DAMAGE:4-8"
+      ARMOR:
+        - "ARMOR:5-9"
+        - "KNOCKBACK_RESISTANCE:0.1"
+    effectiveness:
+      - right: "+30%"
+      - left: "-15%"
+
+  "MATERIAL_INGREDIENT:SANDSTORM_HUSK":
+    effectiveness:
+      - below: "+35%"
+      - above: "+35%"
+      - not-touching: "-20%"
+
+  "MATERIAL_INGREDIENT:DESERT_STALKER_CLAW":
+    traits:
+      WEAPON:
+        - "CRITICAL_STRIKE_CHANCE:4-8"
+        - "ATTACK_DAMAGE:12-20"
+      ARMOR:
+        - "MAX_HEALTH:30-55"
+        - "MOVEMENT_SPEED:0.03"
+    effectiveness:
+      - touching: "+25%"
+      - not-touching: "-10%"
+
+  "MATERIAL_INGREDIENT:ANUBIS_GUARD_SEAL":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:15-26"
+        - "PVE_DAMAGE:6-12"
+      ARMOR:
+        - "DAMAGE_REDUCTION:5-8"
+        - "ARMOR:8-14"
+
+  "MATERIAL_INGREDIENT:PHARAOHS_OBSIDIAN_CROWN":
+    traits:
+      WEAPON:
+        - "MAGIC_DAMAGE:16-28"
+        - "MANA_REGENERATION:3-6"
+      ARMOR:
+        - "MAX_MANA:50-80"
+        - "DAMAGE_REDUCTION:5-9"
+    effectiveness:
+      - above: "+40%"
+      - below: "-15%"
+
+  "MATERIAL_INGREDIENT:SCORCHING_SUN_SCARAB":
+    effectiveness:
+      - left: "+45%"
+      - right: "+45%"
+      - not-touching: "-25%"
+
+  "MATERIAL_INGREDIENT:TOMB_SOVEREIGN_MONOLITH_SHARD":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:20-35"
+        - "PHYSICAL_DAMAGE:10-20"
+      ARMOR:
+        - "MAX_HEALTH:50-90"
+        - "ARMOR_TOUGHNESS:6-12"
+
+  "MATERIAL_INGREDIENT:SOUL_OF_THE_SPHINX_COLOSSUS":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:22-38"
+        - "CRITICAL_STRIKE_POWER:18-30"
+      ARMOR:
+        - "DAMAGE_REDUCTION:7-12"
+        - "BLOCK_RATING:10-18"
+    effectiveness:
+      - touching: "+40%"
+      - not-touching: "-20%"
+
+  "MATERIAL_INGREDIENT:SUN_SCEPTER_CREST":
+    traits:
+      WEAPON:
+        - "MAGIC_DAMAGE:25-45"
+        - "CRITICAL_STRIKE_CHANCE:6-12"
+      ARMOR:
+        - "MAX_MANA:70-120"
+        - "MANA_REGENERATION:4-8"
+    effectiveness:
+      - below: "+50%"
+      - above: "-20%"
+
+  "MATERIAL_INGREDIENT:ASTRAL_ECLIPSE_ARTIFACT":
+    traits:
+      WEAPON:
+        - "ATTACK_DAMAGE:30-50"
+        - "MAGIC_DAMAGE:30-50"
+        - "CRITICAL_STRIKE_POWER:25-40"
+      ARMOR:
+        - "MAX_HEALTH:80-150"
+        - "DAMAGE_REDUCTION:10-15"
+        - "ARMOR:12-22"
+    effectiveness:
+      - touching: "+60%"
+      - not-touching: "+25%"

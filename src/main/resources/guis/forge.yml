@@ -1,0 +1,100 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Forge GUI Layout
+# ---------------------------------------------------------
+
+title: "&8⚒ &6Advanced Forge"
+size: 54 # Harus kelipatan 9 (54 = Large Chest)
+
+# Mapping Slot untuk Peletakan Item Real
+slots:
+  # Slot khusus menaruh Blueprint
+  blueprint-slot: 4
+  
+  # Slot untuk menaruh material (diambil dari screenshot user)
+  # Di screenshot: Slot pertama (Mob) ada 2/3 baris.
+  # Kita asumsikan tata letaknya di baris ke-2, ke-3, ke-4
+  material-1: [11, 20, 29]
+  material-2: [13, 22, 31]
+  material-3: [15, 24, 33]
+  
+  # Slot khusus Ingredient (Bebas diatur koordinatnya, tidak hard-coded)
+  # Default: 6 slot (misal di sela-sela material)
+  ingredients: [12, 14, 21, 23, 30, 32]
+  
+  # Slot khusus tempat preview item muncul
+  preview-slot: 40
+  
+  # Slot tombol Forge (Anvil)
+  forge-button: 49
+
+# Item-item dekorasi (Kaca / Background)
+decorations:
+  # Kaca Blueprint (Cyan) - Contoh di sekitar slot blueprint
+  cyan-glass:
+    material: CYAN_STAINED_GLASS_PANE
+    name: "&bSlot Blueprint"
+    slots: [4]
+    
+  # Kaca Orange (Material)
+  orange-glass:
+    material: ORANGE_STAINED_GLASS_PANE
+    name: "&6Slot Material"
+    slots: [11, 20, 29, 13, 22, 31, 15, 24, 33]
+
+  # Kaca Ungu (Ingredients)
+  purple-glass:
+    material: PURPLE_STAINED_GLASS_PANE
+    name: "&dSlot Ingredient"
+    slots: [12, 14, 21, 23, 30, 32]
+    
+  # Kaca Merah (Preview Background)
+  red-glass:
+    material: RED_STAINED_GLASS_PANE
+    name: "&cPreview Hasil"
+    slots: [40]
+    
+  # Background hitam sisanya
+  background:
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    slots: [0, 1, 9, 7, 8, 17, 36, 45, 46, 52, 53, 44]
+
+# Desain Tombol Forge (Dinamis Berdasarkan Status Blueprint & Material)
+forge-button-item:
+  material: ANVIL
+  status-format:
+    fulfilled: "&a%current%/%required% &a✔"
+    unfulfilled: "&c%current%/%required% &c✗"
+  empty:
+    name: "&c&lTEMPA SEKARANG"
+    lore:
+      - "&7Letakkan Blueprint terlebih dahulu"
+      - "&7untuk melihat syarat material penempaan."
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&7Status: &cBelum ada Blueprint"
+  missing-materials:
+    name: "&e&lTEMPA SEKARANG"
+    lore:
+      - "&7Item Target: &f%target_item%"
+      - ""
+      - "&6Syarat Material:"
+      - "  %material_1%: %status_1%"
+      - "  %material_2%: %status_2%"
+      - "  %material_3%: %status_3%"
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&c✗ Material belum mencukupi!"
+  ready:
+    name: "&a&lTEMPA SEKARANG"
+    lore:
+      - "&7Item Target: &f%target_item%"
+      - ""
+      - "&6Syarat Material:"
+      - "  %material_1%: %status_1%"
+      - "  %material_2%: %status_2%"
+      - "  %material_3%: %status_3%"
+      - ""
+      - "&8&m───────────────────────────────"
+      - "&a✔ Seluruh syarat telah terpenuhi!"
+      - "&eKlik untuk menempa item ini."

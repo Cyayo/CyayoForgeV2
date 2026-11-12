@@ -1,0 +1,38 @@
+# ---------------------------------------------------------
+# CyayoForgeV2 - Abilities Configuration
+# ---------------------------------------------------------
+# Di sini Anda mengkonfigurasi kemampuan pasif (Skill) yang akan disuntikkan ke senjata/armor
+# jika material tertentu menjadi "Material Dominan" saat penempaan.
+#
+# Kemampuan pasif ini terintegrasi langsung dengan sistem Ability milik MMOItems/MythicLib.
+
+abilities:
+  "MATERIAL:DRAGON_HEART":
+    # Kategori WEAPON akan disuntikkan JIKA hasil dari Blueprint adalah kategori senjata (Pedang, Panah, Tongkat, dll)
+    WEAPON:
+      ability-id: "FIREBALL"          # ID skill bawaan MMOItems / MythicLib
+      cast-mode: "ON_HIT"             # Kapan skill aktif (ON_HIT, RIGHT_CLICK, dll)
+      modifiers:
+        damage: 50.0                  # Pengaturan damage dari bola api
+        cooldown: 5.0                 # Waktu jeda skill
+    
+    # Kategori ARMOR akan disuntikkan JIKA hasil dari Blueprint adalah kategori armor (Helm, Baju, Celana, Sepatu)
+    ARMOR:
+      ability-id: "FIRE_RESISTANCE"
+      cast-mode: "ON_DAMAGED"
+      modifiers:
+        cooldown: 10.0
+        duration: 5.0
+
+  "MATERIAL:ICE_SHARD":
+    WEAPON:
+      ability-id: "FROSTBOLT"
+      cast-mode: "ON_HIT"
+      modifiers:
+        damage: 20.0
+        duration: 3.0
+    ARMOR:
+      ability-id: "ICE_SHIELD"
+      cast-mode: "ON_DAMAGED"
+      modifiers:
+        cooldown: 15.0
